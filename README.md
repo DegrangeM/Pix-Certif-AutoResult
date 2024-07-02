@@ -2,7 +2,7 @@
  
 Permet de télécharger en un clic les résultats de toutes classes dans un unique csv (au lieu de devoir le faire classe par classe).
 
-![image](https://github.com/DegrangeM/Pix-Certif-AutoResult/assets/53106394/97ae8a3c-430d-40a5-9521-2684556f08b9)
+![image](https://github.com/DegrangeM/Pix-Certif-AutoResult/assets/53106394/7e59d5e9-7340-4a20-a66f-1b5520b723c7)
 
 ## Fonctionnement
 
@@ -16,7 +16,9 @@ Permet de télécharger en un clic les résultats de toutes classes dans un uniq
 
 - Sans quitter la page, cliquez sur le marque-page créé à l'étape d'installation du script
 
-- Patientez jusqu'à ce qu'un message indique que tout est terminé ! Il faut compter environ 1 seconde par classe dans l'établissement (y compris ne passant pas la certification Pix).
+- Patientez jusqu'à ce qu'un message indique que tout est terminé ! Il faut compter environ 1 seconde par classe dans l'établissement (y compris ne passant pas la certification Pix). Immédiatement après le message, le fichier csv est proposé au téléchargement.
+
+- Remarque : le fichier csv obtenu est strictement identique à celui donné par Pix via la méthode normale, à ceci près qu'une colonne "Classe" est ajouté.
 
 ## Attention
 
