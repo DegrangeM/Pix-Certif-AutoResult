@@ -77,11 +77,9 @@ if (location.href === "https://orga.pix.fr/certifications") {
             return response.text();
           })
             .then(text => {
-              if (text === '') return;
-              /* if(csv !== '') { /* On retire l'en-tête si on l'a déjà récupéré */
-                text = text.slice(text.indexOf('\n')) /* le saut à la lign est gardé */
+              if (text === '') {
+                return;
               }
-              */
               let resultats = text.split('\n');
               if (csv === '') {
                 /* on récupère l'en-tête et on ajoute une colonne pour la classe */
