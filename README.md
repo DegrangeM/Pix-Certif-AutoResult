@@ -2,7 +2,7 @@
  
 Permet de télécharger en un clic les résultats de toutes classes dans un unique csv (au lieu de devoir le faire classe par classe).
 
-![image](https://user-images.githubusercontent.com/53106394/214732875-c1da8928-a31c-43da-9f35-001978d27b61.png)
+![image](https://github.com/DegrangeM/Pix-Certif-AutoResult/assets/53106394/97ae8a3c-430d-40a5-9521-2684556f08b9)
 
 ## Fonctionnement
 
