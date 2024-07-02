@@ -2,7 +2,7 @@ if (location.href === "https://orga.pix.fr/certifications") {
   function wait() {
     return new Promise((resolve) => setTimeout(resolve, 1000));
   }
-  let classes = Array.from(document.querySelector('ul.pix-select__options').querySelectorAll('li')).map(x=>x.textContent.replaceAll(/\s/g,'')).slice(1);
+  let classes = Array.from(document.querySelector('ul.pix-select__options').querySelectorAll('li')).map(x => x.textContent.replaceAll(/\s/g, '')).slice(1);
   if (classes && classes.length) {
 
     document.body.style.cursor = 'wait';
@@ -15,14 +15,14 @@ if (location.href === "https://orga.pix.fr/certifications") {
 
 
     Promise.resolve().then(() => {
-        /* ETAPE 1 : On récupère le token de session */
+      /* ETAPE 1 : On récupère le token de session */
 
       ACCESS_TOKEN = JSON.parse(localStorage.getItem('ember_simple_auth-session')).authenticated.access_token;
       USER_ID = JSON.parse(localStorage.getItem('ember_simple_auth-session')).authenticated.user_id;
       ORGA_ID = false;
 
       /* ETAPE 2 : On récupère l'ID d'établissement */
-    }).then(() => fetch("https://orga.pix.fr/api/prescription/prescribers/"+USER_ID, {
+    }).then(() => fetch("https://orga.pix.fr/api/prescription/prescribers/" + USER_ID, {
       "headers": {
         "accept": "application/vnd.api+json",
         "accept-language": "fr",
@@ -50,7 +50,7 @@ if (location.href === "https://orga.pix.fr/certifications") {
         let p = Promise.resolve();
         for (let classe of classes) {
           p = p.then(
-            () => fetch("https://orga.pix.fr/api/organizations/" + ORGA_ID + "/certification-results?division="+classe+"&lang=fr", {
+            () => fetch("https://orga.pix.fr/api/organizations/" + ORGA_ID + "/certification-results?division=" + classe + "&lang=fr", {
               "headers": {
                 "accept": "application/vnd.api+json",
                 "accept-language": "fr",
@@ -69,14 +69,21 @@ if (location.href === "https://orga.pix.fr/certifications") {
               "mode": "cors",
               "credentials": "include"
             })
-          ).then(response => response.text())
+          ).then(response => {
+            // On vérifie si la requête a réussi (on évite ainsi les erreurs 404 qui correspond à des classes sans certifications)
+            if (!response.ok) {
+              return Promise.resolve('');
+            }
+            return response.text();
+          })
             .then(text => {
+              if (text === '') return;
               /* if(csv !== '') { // On retire l'en-tête si on l'a déjà récupéré
                 text = text.slice(text.indexOf('\n')) // le saut à la lign est gardé
               }
               */
               let resultats = text.split('\n');
-              if(csv === '') {
+              if (csv === '') {
                 // on récupère l'en-tête et on ajoute une colonne pour la classe
                 csv = resultats[0] + ';Classe\n';
               } else {
@@ -90,16 +97,17 @@ if (location.href === "https://orga.pix.fr/certifications") {
             .then(wait);
         }
         return p;
-      }).then(() => { document.body.style.cursor = 'default'; alert('Terminé !'); 
+      }).then(() => {
+        document.body.style.cursor = 'default'; alert('Terminé !');
 
-      /* ETAPE 4 : On télécharge le fichier */
-      let blob = new Blob([csv], { type: 'text/csv' });
-      let url = window.URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = url;
-      a.download = 'certifications.csv';
-      a.click();
-      window.URL.revokeObjectURL(url);
+        /* ETAPE 4 : On télécharge le fichier */
+        let blob = new Blob([csv], { type: 'text/csv' });
+        let url = window.URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = 'certifications.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
       })
       .catch((e) => { document.body.style.cursor = 'not-allowed'; alert('Erreur : ' + e); });
   }
