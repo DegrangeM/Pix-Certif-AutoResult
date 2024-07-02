@@ -70,7 +70,7 @@ if (location.href === "https://orga.pix.fr/certifications") {
               "credentials": "include"
             })
           ).then(response => {
-            // On vérifie si la requête a réussi (on évite ainsi les erreurs 404 qui correspond à des classes sans certifications)
+            /* On vérifie si la requête a réussi (on évite ainsi les erreurs 404 qui correspond à des classes sans certifications) */
             if (!response.ok) {
               return Promise.resolve('');
             }
@@ -78,19 +78,19 @@ if (location.href === "https://orga.pix.fr/certifications") {
           })
             .then(text => {
               if (text === '') return;
-              /* if(csv !== '') { // On retire l'en-tête si on l'a déjà récupéré
-                text = text.slice(text.indexOf('\n')) // le saut à la lign est gardé
+              /* if(csv !== '') { /* On retire l'en-tête si on l'a déjà récupéré */
+                text = text.slice(text.indexOf('\n')) /* le saut à la lign est gardé */
               }
               */
               let resultats = text.split('\n');
               if (csv === '') {
-                // on récupère l'en-tête et on ajoute une colonne pour la classe
+                /* on récupère l'en-tête et on ajoute une colonne pour la classe */
                 csv = resultats[0] + ';Classe\n';
               } else {
                 csv += '\n';
               }
-              resultats = resultats.slice(1); // On retire l'en-tête
-              resultats = resultats.map(x => x + ';' + classe); // On ajoute la classe à chaque ligne
+              resultats = resultats.slice(1); /* On retire l'en-tête */
+              resultats = resultats.map(x => x + ';' + classe); /* On ajoute la classe à chaque ligne */
               text = resultats.join('\n');
               csv += text;
             })
