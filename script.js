@@ -2,7 +2,7 @@ if (location.href === "https://orga.pix.fr/certifications") {
   function wait() {
     return new Promise((resolve) => setTimeout(resolve, 1000));
   }
-  let classes = Array.from(document.querySelector('ul.pix-select__options').querySelectorAll('li')).map(x => x.textContent.replaceAll(/\s/g, '')).slice(1);
+  let classes = Array.from(document.querySelector('ul.pix-select_list').querySelectorAll('li')).map(x => x.textContent.replaceAll(/\s/g, '')).slice(1);
   if (classes && classes.length) {
 
     document.body.style.cursor = 'wait';
