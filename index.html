@@ -26,6 +26,21 @@
             link.href = 'javascript:' + text.replaceAll(/\r?\n/g, '') + 'void(0);';
         });
     </script>
+
+    <h2>Version alernative (multi fichiers)</h2>
+    <p>Si vous préférez avoir un fichier par classe, vous pouvez glisser le lien ci-dessous à la place.<br /></p>
+
+    <p>
+        <a href="#" id="script2">Pix Certif AutoResult</a>
+    </p>
+
+        <script type="text/javascript">
+        // convert pixcertif file content into a bookmarklet link
+        fetch('./script2.js').then(reponse => reponse.text()).then(text => {
+            const link = document.getElementById('script2');
+            link.href = 'javascript:' + text.replaceAll(/\r?\n/g, '') + 'void(0);';
+        });
+    </script>
 </body>
 
 </html>
