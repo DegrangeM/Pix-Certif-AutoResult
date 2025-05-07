@@ -25,3 +25,14 @@ Permet de télécharger en un clic les résultats de toutes classes dans un uniq
 Je ne suis pas réponsable si ça casse tout :)
 
 Pensez à vérifier rapidement qu'il n'y ait pas eu d'erreur dans le fichier obtenu !
+
+En particulier, les données de certifications précédentes peuvent se retrouver présentes.
+
+## Version alernative (multi fichiers)
+
+Si vous préférez avoir un fichier par classe, une version alternative est également proposée.
+Dans ce cas là, la colonne classe n'est pas rajoutée dans le fichier obtenu puisqu'elle peut être obtenue depuis le nom du fichier.
+Le fichier est alors identique à celui que vous auriez téléchargez vous même depuis Pix.
+Cette version alternative permet de gagner du temps : il n'est plus nécessaire de choisir une classe, appuyer sur le bouton, attendre, choisir une autre classe, appuyer, attendre, etc.
+Il suffit de lancer le script, de patienter, et ensuite de valider l'enregistrement de chaque fichier.
+
