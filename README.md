@@ -30,9 +30,10 @@ En particulier, les données de certifications précédentes peuvent se retrouve
 
 ## Version alernative (multi fichiers)
 
-Si vous préférez avoir un fichier par classe, une version alternative est également proposée.
+Si vous préférez avoir un fichier par classe, une version alternative est également proposée en bas de la page d'installation.
 Dans ce cas là, la colonne classe n'est pas rajoutée dans le fichier obtenu puisqu'elle peut être obtenue depuis le nom du fichier.
 Le fichier est alors identique à celui que vous auriez téléchargez vous même depuis Pix.
+
 Cette version alternative permet de gagner du temps : il n'est plus nécessaire de choisir une classe, appuyer sur le bouton, attendre, choisir une autre classe, appuyer, attendre, etc.
-Il suffit de lancer le script, de patienter, et ensuite de valider l'enregistrement de chaque fichier.
+Il suffit de lancer le script, de patienter, et ensuite de valider l'enregistrement de chaque fichier (votre navigateur vous demandera peut-être la permission de télécharger plusieurs fichiers). Attendez-bien l'affichage du message "Terminé" avant de fermer la fenêtre.
 
