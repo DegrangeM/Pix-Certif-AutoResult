@@ -76,14 +76,14 @@ if (location.href === "https://orga.pix.fr/certifications") {
               return Promise.resolve('');
             }
             nom_fichier = (response?.headers?.get("content-disposition")?.match('filename="(.*)"$')||"erreur.csv")[1];
-            return response.text();
+            return response.blob();
           })
-            .then(text => {
-              if (text === '') {
+            .then(blob => {
+              if (blob === '') {
                 return;
               }
               /* ETAPE 4 : On télécharge le fichier */
-              let blob = new Blob([text], { type: 'text/csv' });
+              //let blob = new Blob([text], { type: 'text/csv' });
               let url = window.URL.createObjectURL(blob);
               let a = document.createElement('a');
               a.href = url;
